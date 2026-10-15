@@ -1,26 +1,5 @@
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useRef } from 'react';
-import type { Mesh } from 'three';
-
-const RotatingObject = () => {
-  // TypeScript ko batane ke liye ki yeh ek Mesh (3D object) hai
-  const meshRef = useRef<Mesh>(null);
-
-  // Yeh function har frame (60fps) par object ko rotate karega
-  useFrame(() => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x += 0.005;
-      meshRef.current.rotation.y += 0.01;
-    }
-  });
-
-  return (
-    <mesh ref={meshRef}>
-      <boxGeometry args={[2.5, 2.5, 2.5]} />
-      <meshStandardMaterial color="#00f0ff" wireframe={true} />
-    </mesh>
-  );
-};
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Float } from '@react-three/drei';
 
 const Scene = () => {
   return (
@@ -28,7 +7,21 @@ const Scene = () => {
       <Canvas camera={{ position: [0, 0, 5] }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[2, 5, 2]} intensity={1} />
-        <RotatingObject />
+        
+        {/* Float इसे हवा में तैरने वाला प्रीमियम लुक देगा */}
+        <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+          <mesh>
+            <boxGeometry args={[2.5, 2.5, 2.5]} />
+            <meshStandardMaterial color="#00f0ff" wireframe={true} />
+          </mesh>
+        </Float>
+
+        {/* OrbitControls हमें इसे उंगली या माउस से कंट्रोल करने की पावर देगा */}
+        <OrbitControls 
+          enableZoom={false} // ज़ूम बंद रखा है ताकि पेज स्क्रॉल करने में दिक्कत न हो
+          enablePan={false} 
+          autoRotate={false} // ऑटो-रोटेशन बंद कर दिया
+        />
       </Canvas>
     </div>
   );
