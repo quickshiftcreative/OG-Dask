@@ -9,4 +9,84 @@ body {
   color: white;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  font-family: sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 1px;
+  white-space: nowrap; /* यह लोगो को टूटने से बचाएगा */
+}
+
+.nav-logo span {
+  color: #00f0ff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* Hero Section Styles */
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 100px 20px 20px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  color: #888;
+  font-size: 1.2rem;
+  max-width: 600px;
+}
+
+/* MOBILE RESPONSIVE FIXES (स्मार्टफोन के लिए सेटिंग्स) */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+  .nav-links {
+    display: none; /* मोबाइल पर मेनू लिंक्स को अभी हाईड करेंगे, बाद में Hamburger मेनू लगाएँगे */
+  }
+  .hero-title {
+    font-size: 2.5rem; /* मोबाइल पर फॉन्ट छोटा कर दिया */
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
 }
