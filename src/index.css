@@ -33,7 +33,7 @@ body {
   font-weight: bold;
   color: #ffffff;
   letter-spacing: 1px;
-  white-space: nowrap; /* यह लोगो को टूटने से बचाएगा */
+  white-space: nowrap;
 }
 
 .nav-logo span {
@@ -52,15 +52,23 @@ body {
   font-size: 1rem;
 }
 
-/* Hero Section Styles */
+/* Hero Section Styles (अब टेक्स्ट और 3D अलग-अलग दिखेंगे) */
 .hero-section {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   padding: 100px 20px 20px;
   text-align: center;
+  gap: 30px;
+}
+
+.hero-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-title {
@@ -73,20 +81,36 @@ body {
   color: #888;
   font-size: 1.2rem;
   max-width: 600px;
+  margin: 0 auto;
 }
 
-/* MOBILE RESPONSIVE FIXES (स्मार्टफोन के लिए सेटिंग्स) */
+/* 3D Wrapper (इसके अंदर हमारा 3D घूमेगा) */
+.hero-3d-wrapper {
+  width: 100%;
+  height: 350px;
+  position: relative;
+  cursor: grab;
+}
+
+.hero-3d-wrapper:active {
+  cursor: grabbing;
+}
+
+/* MOBILE RESPONSIVE FIXES */
 @media (max-width: 768px) {
   .navbar {
     padding: 15px 20px;
   }
   .nav-links {
-    display: none; /* मोबाइल पर मेनू लिंक्स को अभी हाईड करेंगे, बाद में Hamburger मेनू लगाएँगे */
+    display: none; 
   }
   .hero-title {
-    font-size: 2.5rem; /* मोबाइल पर फॉन्ट छोटा कर दिया */
+    font-size: 2.5rem; 
   }
   .hero-subtitle {
     font-size: 1rem;
+  }
+  .hero-section {
+    padding-top: 120px;
   }
 }
