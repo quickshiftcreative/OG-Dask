@@ -12,7 +12,6 @@ body {
   font-family: sans-serif;
 }
 
-/* Navbar Styles */
 .navbar {
   position: fixed;
   top: 0;
@@ -52,23 +51,34 @@ body {
   font-size: 1rem;
 }
 
-/* Hero Section Styles (अब टेक्स्ट और 3D अलग-अलग दिखेंगे) */
+/* यहाँ लेआउट में बदलाव किया गया है */
 .hero-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* अब यह पेज के ऊपर से शुरू होगा */
   min-height: 100vh;
   padding: 100px 20px 20px;
   text-align: center;
-  gap: 30px;
+}
+
+.hero-3d-wrapper {
+  width: 100%;
+  height: 45vh; /* मोबाइल स्क्रीन का आधा हिस्सा 3D कैरेक्टर लेगा */
+  position: relative;
+  cursor: grab;
+  margin-bottom: 30px;
+}
+
+.hero-3d-wrapper:active {
+  cursor: grabbing;
 }
 
 .hero-text {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 10;
 }
 
 .hero-title {
@@ -84,19 +94,6 @@ body {
   margin: 0 auto;
 }
 
-/* 3D Wrapper (इसके अंदर हमारा 3D घूमेगा) */
-.hero-3d-wrapper {
-  width: 100%;
-  height: 350px;
-  position: relative;
-  cursor: grab;
-}
-
-.hero-3d-wrapper:active {
-  cursor: grabbing;
-}
-
-/* MOBILE RESPONSIVE FIXES */
 @media (max-width: 768px) {
   .navbar {
     padding: 15px 20px;
@@ -110,7 +107,7 @@ body {
   .hero-subtitle {
     font-size: 1rem;
   }
-  .hero-section {
-    padding-top: 120px;
+  .hero-3d-wrapper {
+    height: 40vh; /* मोबाइल पर हाइट को थोड़ा एडजस्ट किया */
   }
 }
