@@ -1,25 +1,22 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Float } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
+import GlassBot from './GlassBot'; // हमने अपना नया बॉट इम्पोर्ट किया
 
 const Scene = () => {
   return (
-    // मैंने यहाँ से background वाला स्टाइल हटा दिया है, अब यह बॉक्स के अंदर रहेगा
-    <Canvas camera={{ position: [0, 0, 5] }}>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[2, 5, 2]} intensity={1} />
+    <Canvas camera={{ position: [0, 0, 6] }}>
+      <ambientLight intensity={0.8} />
+      <directionalLight position={[5, 5, 5]} intensity={2} color="#00f0ff" />
+      <directionalLight position={[-5, -5, 5]} intensity={2} color="#ff0054" />
       
-      <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-        <mesh>
-          <boxGeometry args={[2.5, 2.5, 2.5]} />
-          <meshStandardMaterial color="#00f0ff" wireframe={true} />
-        </mesh>
-      </Float>
+      {/* हमारा नया 3D कैरेक्टर */}
+      <GlassBot />
 
+      {/* कंट्रोल्स (ताकि आप पेज को स्क्रॉल कर सकें पर बॉट माउस को ट्रैक करे) */}
       <OrbitControls 
         enableZoom={false}
         enablePan={false}
-        autoRotate={true} /* यह अब अपने आप भी घूमेगा */
-        autoRotateSpeed={2}
+        enableRotate={false} /* हमने इसे बंद कर दिया है क्योंकि बॉट अब खुद माउस/उंगली को ट्रैक करेगा */
       />
     </Canvas>
   );
